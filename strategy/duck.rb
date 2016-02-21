@@ -18,14 +18,14 @@ class Duck
   end
 
   def fly_behaviour=(fb)
-    unless fb.class.superclass == 'FlyBehaviour'
+    unless fb.class.ancestors.include? FlyBehaviour
       raise ArgumentError, "fly behaviour must be inherited from fly behaviour interface"
     end
     @fly_behaviour = fb
   end
 
   def quack_behaviour=(qb)
-    unless qb.class.superclass == 'QuackBehaviour'
+    unless qb.class.ancestors.include? QuackBehaviour
       raise ArgumentError, "quack behaviour must be inherited from quack behaviour interface"
     end
     @quack_behaviour = qb
